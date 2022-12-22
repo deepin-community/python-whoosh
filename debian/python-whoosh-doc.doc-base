@@ -1,0 +1,10 @@
+Document: python-whoosh
+Title: Whoosh documentation
+Author: Matt Chaput <matt@whoosh.ca>
+Abstract: This documentation describes what Whoosh is and how it can be used to
+ develop custom search engines for your content.
+Section: Programming/Python
+
+Format: HTML
+Index: /usr/share/doc/python-whoosh-doc/html/index.html
+Files: /usr/share/doc/python-whoosh-doc/html/*.html

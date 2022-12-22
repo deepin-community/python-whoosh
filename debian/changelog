@@ -1,0 +1,509 @@
+python-whoosh (2.7.4+git6-g9134ad92-5) unstable; urgency=medium
+
+  [ Emmanuel Arias ]
+  * Team upload.
+  * Apply patch to use [tool:pytest] instead of [pytest] section. (Closes: #948426)
+  * Remove Python 2 support. (Closes: #938263)
+  * d/gitlab-ci.yml: enable Salsa CI.
+
+  [ Ondřej Nový ]
+  * Use debhelper-compat instead of debian/compat.
+  * Bump Standards-Version to 4.4.1.
+
+ -- Sandro Tosi <morph@debian.org>  Mon, 13 Jan 2020 13:10:26 -0500
+
+python-whoosh (2.7.4+git6-g9134ad92-4) unstable; urgency=medium
+
+  * Revert "Move to debhelper-compat virtual package, level 11" to avoid making
+    too many changes for the buster freeze.
+
+ -- Chris Lamb <lamby@debian.org>  Sun, 07 Apr 2019 11:41:12 +0200
+
+python-whoosh (2.7.4+git6-g9134ad92-3) unstable; urgency=medium
+
+  * Mark non-deterministic "test_minimize_dfa" test as XFAIL. (Closes: #897489)
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 05 Apr 2019 15:51:06 +0200
+
+python-whoosh (2.7.4+git6-g9134ad92-2) unstable; urgency=medium
+
+  [ Chris Lamb ]
+  * Fix Git repository layout, fixing the upstream/2.7.4+git6-g9134ad92
+    tag and remerging.
+  * Move to debhelper-compat virtual package, level 11.
+  * Refresh patches.
+  * wrap-and-sort -sa.
+  * Bump Standards-Version to 4.3.0.
+  * Add myself to Uploaders.
+
+  [ Ondřej Nový ]
+  * d/control: Set Vcs-* to salsa.debian.org
+  * d/copyright: Fix Format URL to correct one
+  * d/control: Deprecating priority extra as per policy 4.0.1
+  * d/watch: Use https protocol
+  * d/changelog: Remove trailing whitespaces
+  * d/control: Remove ancient X-Python-Version field
+  * d/control: Remove ancient X-Python3-Version field
+  * Convert git repository from git-dpm to gbp layout
+
+ -- Chris Lamb <lamby@debian.org>  Wed, 13 Feb 2019 17:30:27 +0100
+
+python-whoosh (2.7.4+git6-g9134ad92-1) unstable; urgency=medium
+
+  * Recentish upstream post-release snapshot (Closes: #868354)
+    - included a number of fixes post-release
+  * git-dpm init'ed repository
+  * d/copyright
+    - updated years
+  * d/rules
+    - upstream now provides english-words.10.gz needed for tests
+  * d/patches
+    + 0001-Added-coding-utf-8-header-to-the-.py-file-with-unico.patch
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Fri, 14 Jul 2017 17:12:30 -0400
+
+python-whoosh (2.7.0-3) UNRELEASED; urgency=medium
+
+  * d/control: Package adopted into the DPMT so update:
+    - Maintainer: DPMT
+    - Uploaders: Me
+    - Vcs-{Git,Browser}
+  * d/README.source: Remove description of quilt workflow and add a note
+    that this package will continue to use its original gbp-pq workflow
+    after adoption into DPMT.
+  * wrap-and-sort -at
+
+ -- Barry Warsaw <barry@debian.org>  Tue, 07 Feb 2017 09:51:53 -0500
+
+python-whoosh (2.7.0-2) unstable; urgency=medium
+
+  * QA upload.
+  * Mark package as orphaned as requested on #812768
+  * d/p/Handle-an-empty-queue-exception-in-mpwriter.patch:
+    Add patch from upstream release 2.7.1 to cope with empty queue exception
+    (Closes: #853115)
+  * d/p/Fix-the-analyzer-in-test_vector_unicode-to-not-lowercase-.patch:
+    Use the upstream solution for the test involving Cherokee text
+    - d/p/test_vector_unicode-Cope-with-updated-Python-unicode-data.patch:
+      drop, no longer needed
+
+ -- Simon McVittie <smcv@debian.org>  Mon, 30 Jan 2017 09:36:00 +0000
+
+python-whoosh (2.7.0-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload, incorporating changes from collab-maint git.
+
+  [ Tobias Frost ]
+  * Team upload (collab-maint)
+  * d/control:
+    - Replace VCS-* with https:// ones.
+    - d/control: Bump S-V to 3.9.8 -- no changes required
+
+  [ Simon McVittie ]
+  * Add sphinxdoc-common to Build-Depends. The sphinxdoc debhelper
+    addon is required for the 'clean' target, so installing it in
+    Build-Depends-Indep is not enough.
+  * debian/missing/english-words.10.gz: Add missing file from upstream
+    2.7.0 tag. The unit tests require this file. (Closes: #812768)
+    - debian/source/include-binaries: Include it in the tarball.
+    - debian/rules: Copy the missing file into tests/ before building.
+      Delete it during clean.
+  * d/p/test_vector_unicode-Cope-with-updated-Python-unicode-data.patch:
+    Add patch to make a test pass under Python 3.5. It makes outdated
+    assumptions about how Python maps Cherokee text to lower-case.
+  * debian/rules: Disable HTTP network access to avoid Sphinx contacting
+    docs.python.org (Policy §4.9)
+
+ -- Simon McVittie <smcv@debian.org>  Sun, 22 Jan 2017 18:57:02 +0000
+
+python-whoosh (2.7.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Update watch file.
+    Thanks to Piotr Ożarowski
+  * debian/copyright: Update copyright years.
+  * debian/upstream/metadata: Added upstream metadata.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>  Thu, 07 May 2015 13:22:20 +0200
+
+python-whoosh (2.5.7-3) unstable; urgency=medium
+
+  [ أحمد المحمودي (Ahmed El-Mahmoudy) ]
+  * Update my email address.
+  * debian/control: Bumped Standards-Version to 3.9.6
+
+  [ Jean-Michel Nirgal Vourgère ]
+  * Change python-whoosh.maintscript into python-whoosh-doc.maintscript
+    /usr/share/doc/python-whoosh-doc was a link to python-whoosh. Fixed
+    'prior-version' as the current one, see dpkg-maintscript-helper(1). Drop
+    optional 'package' since where are not using maintscript but
+    python-whoosh-doc.maintscript. Drop unused Pre-Depends on dpkg with support
+    of symlink_to_dir, added missing Pre-Depends on misc:Pre-Depends in
+    python-whoosh-doc (Closes: #768275)
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>  Sun, 16 Nov 2014 12:16:23 +0200
+
+python-whoosh (2.5.7-2) unstable; urgency=medium
+
+  [ Zygmunt Krynicki ]
+  * debian/rules: convert to pybuild, simplify all rules
+  * debian/control: add support for python3, depend on dh-python
+    (Closes: #647439)
+  * debian/python-whoosh.install: remove (not needed anymore)
+  * debian/control: build-depend on python3-sphinx for documentation
+
+  [ أحمد المحمودي (Ahmed El-Mahmoudy) ]
+  * Moved packaging to collab-maint.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Tue, 22 Jul 2014 11:53:36 +0200
+
+python-whoosh (2.5.7-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/copyright: Update copyright years.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Sat, 22 Feb 2014 10:06:33 +0200
+
+python-whoosh (2.5.6-3) unstable; urgency=low
+
+  * Added debian/python-whoosh.maintscript to switch
+    /usr/share/doc/python-whoosh symlink to a real directory
+    (Closes: #736299)
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Sat, 25 Jan 2014 11:53:46 +0200
+
+python-whoosh (2.5.6-2) unstable; urgency=low
+
+  * Remove override for dh_fixperms, seems to be no more needed.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Mon, 23 Dec 2013 22:51:23 +0200
+
+python-whoosh (2.5.6-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Sat, 21 Dec 2013 16:05:11 +0200
+
+python-whoosh (2.5.5-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control: Bumped Standards-Version to 3.9.5
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Thu, 14 Nov 2013 13:36:18 +0200
+
+python-whoosh (2.5.4-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Mon, 23 Sep 2013 21:44:53 +0200
+
+python-whoosh (2.5.3-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Fri, 13 Sep 2013 04:39:56 +0200
+
+python-whoosh (2.5.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Sat, 17 Aug 2013 18:20:03 +0200
+
+python-whoosh (2.5.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    + Remove Daniel Watkins from Uploaders field, since he seems to be MIA
+      (Closes: #705280)
+    + Bumped Standards-Version to 3.9.4
+    + Use canonical URIs in Vcs-* fields
+    + Remove obsolete DMUA fields
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Fri, 05 Jul 2013 00:19:56 +0200
+
+python-whoosh (2.4.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * Removed test_final_ranges_thisyear.diff: fixed usptream.
+  * debian/control: Updated Standards-Version to 3.9.3
+  * Bumped compat level to 9
+  * debian/copyright: Updated copyright format & years.
+  * Un-link python-whoosh-doc documentation directory from python-whoosh
+    documentation directory:
+    + debian/rules: remove override for dh_installdocs
+    + Update python-whoosh-doc.doc-base
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Thu, 26 Jul 2012 13:45:44 +0200
+
+python-whoosh (2.3.2-2) unstable; urgency=low
+
+  * Added test_final_ranges_thisyear.diff to fix the "oct 2010 to feb" date
+    range test (Closes: #655641)
+  * debian/control: Updated upstream URL
+  * debian/copyright:
+    + Updated copyright years
+    + Updated upstream URL
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Fri, 13 Jan 2012 11:32:18 +0200
+
+python-whoosh (2.3.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * Build-Dep on python-sphinx (>= 1.0.7+dfsg)
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Fri, 16 Dec 2011 15:54:19 +0200
+
+python-whoosh (2.3.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Updated copyright format & info
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Sat, 08 Oct 2011 16:39:48 +0200
+
+python-whoosh (2.2.2-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #638765)
+  * Moved packaging to Git.
+    + debian/control: Remove DPMT from package maintainership due to the move
+      to Git. Put myself as maintainer instead
+  * Split documentation into python-whoosh-doc package
+    + debian/control:
+      - Added python-whoosh-doc package
+      - Added Suggests: python-whoosh-doc for python-whoosh
+    + debian/rules: Symlink python-whoosh-doc documentation directory to
+      python-whoosh documentation directory.
+    + Renamed debian/python-whoosh.{docs,doc-base} to
+      debian/python-whoosh-doc.{docs,doc-base}
+    + Added debian/python-whoosh.install
+  * debian/control: XS-Python-Version -> X-Python-Version
+  * Use sphinxdoc debhelper instead of managing symlinks myself
+    + debian/control: Replace libjs-jquery with ${sphinxdoc:Depends}
+    + debian/rules: Add sphinxdoc debhelper sequence to dh call
+    + Removed debian/python-whoosh.links
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Fri, 26 Aug 2011 10:26:44 +0200
+
+python-whoosh (1.8.4-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Sat, 04 Jun 2011 19:44:07 +0200
+
+python-whoosh (1.8.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control: Bumped Standards-Version to 3.9.2
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Tue, 19 Apr 2011 08:59:07 +0200
+
+python-whoosh (1.8.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Mon, 04 Apr 2011 20:21:30 +0200
+
+python-whoosh (1.8.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Remove fix_test_combine.diff patch, as it is applied upstream.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Thu, 24 Mar 2011 10:50:58 +0200
+
+python-whoosh (1.7.8-1) unstable; urgency=low
+
+  * New upstream release.
+  * Removed use_nose.diff & shm_check.diff as they are applied upstream.
+  * Added fix_test_combine.diff patch from upstream to fix test_combine test.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Sat, 19 Mar 2011 10:15:14 +0200
+
+python-whoosh (1.7.6-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control: added python-nose to B-D-I
+  * Added use_nose.diff patch from upstream to switch setuptools "test_suite"
+    key to use Nose integration.
+  * Refreshed shm_check.diff patch.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Sat, 26 Feb 2011 23:57:15 +0200
+
+python-whoosh (1.7.4-1) unstable; urgency=low
+
+  * New upstream release.
+  * Removed fix_methodcaller_import.diff and fix_test_colonspace.diff patches,
+    as they are applied upstream.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Tue, 22 Feb 2011 21:30:12 +0200
+
+python-whoosh (1.7.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * Added fix_methodcaller_import.diff patch which fixes import of
+    methodcaller, which was only added in Python 2.6.
+  * Added fix_test_colonspace.diff patch which fixes test_colonspace failure.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Fri, 18 Feb 2011 10:02:16 +0200
+
+python-whoosh (1.4.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Fri, 10 Dec 2010 10:54:37 +0200
+
+python-whoosh (1.2.6-2) unstable; urgency=low
+
+  * debian/patches/shm_check.diff: try importing multiprocessing.synchronize
+    to check for ImportError, this is to avoid FTBFS against python 2.7
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Thu, 11 Nov 2010 12:46:49 +0200
+
+python-whoosh (1.2.6-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Fri, 05 Nov 2010 09:53:55 +0200
+
+python-whoosh (1.2.5-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Sat, 30 Oct 2010 05:54:31 +0200
+
+python-whoosh (1.2.3-1) experimental; urgency=low
+
+  * New upstream release.
+  * Refreshed shm_check.diff patch.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Fri, 29 Oct 2010 08:07:24 +0200
+
+python-whoosh (1.1.0-1) experimental; urgency=low
+
+  * New upstream release
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Fri, 22 Oct 2010 14:30:44 +0200
+
+python-whoosh (1.0.0-1) experimental; urgency=low
+
+  [ Jakub Wilk ]
+  * Use ‘chmod a-x’ rather than ‘chmod -x’ in debian/rules.
+  * Don't ignore errors while running tests.
+  * Respect the ‘nocheck’ build option.
+  * Remove embedded copies of pyparsing for all Python versions.
+
+  [ أحمد المحمودي (Ahmed El-Mahmoudy) ]
+  * New upstream release
+  * Bumped compat level to 8.
+  * debian/control:
+    + Updated my email address.
+    + Bumped Standards-Version to 3.9.1 (no changes needed)
+    + Dropped python-pyparsing from Depends & Build-Deps, since it is not used
+      anymore.
+    + Add XS-Python-Version field.
+    + Drop python-support from Build-Deps
+    + Bumped python-all Build-Dep to (>= 2.6.6-2)
+    + Added Breaks: ${python:Breaks}, to avoid getting
+      python (<= <UNSUPPORTED VERSION>) in Depends.
+  * debian/rules:
+    + added --with python2 to dh call.
+    + Removed override for dh_pysupport, not needed anymore.
+    + Override dh_auto_clean to remove docs/build
+  * debian/copyright: updated copyrights.
+  * Dropped 01-remove-pyparsing.diff patch, as it is no more needed.
+  * Added shm_check.diff patch to check if semaphore locking works, since
+    /dev/shm is not mounted as tmpfs in build chroots.
+  * Removed debian/pyversions
+
+  [ Bernd Zeimetz ]
+  * Adding DM-Upload-Allowed: yes for أحمد المحمودي.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>  Thu, 07 Oct 2010 20:26:14 +0200
+
+python-whoosh (0.3.18-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    + Added python-sphinx to Build-Depends-Indep to build documentation.
+    + Added libjs-jquery to Depends.
+    + Added python-all to Build-Depends-Indep.
+  * debian/rules:
+    + Override dh_auto_test to run test suite.
+    + Override dh_auto_build to also build documentation.
+    + Override dh_compress to avoid compressing Whoosh documentation files.
+    + Override dh_installdocs to avoid installing convenience copy of
+      jquery.js. Instead, it is symlinked from the libjs-jquery package.
+    + Logic added for fixing permission of PKG-INFO file such that it would
+      work for both Debian & Ubuntu.
+  * Added debian/python-whoosh.docs, debian/python-whoosh.links,
+    debian/python-whoosh.doc-base
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>  Thu, 25 Feb 2010 08:49:55 +0200
+
+python-whoosh (0.3.16-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>  Mon, 15 Feb 2010 11:51:28 +0200
+
+python-whoosh (0.3.15-1) unstable; urgency=low
+
+  [ أحمد المحمودي (Ahmed El-Mahmoudy) ]
+  * New upstream release.
+  * debian/rules: Override dh_fixperms to remove executable bit from files in
+    /usr/share/pyshared/*.egg-info/
+  * Refresh 01-remove-pyparsing.diff patch.
+  * Switched to 3.0 (quilt) source format.
+  * debian/control:
+    + Bumped Standards-Version to 3.8.4
+    + Added myself to uploaders
+
+  [ Bernd Zeimetz ]
+  * Switch Uploaders and Maintainers in debian/control.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>  Sun, 31 Jan 2010 13:51:02 +0200
+
+python-whoosh (0.3.2-1) unstable; urgency=low
+
+  [ Bernd Zeimetz ]
+  * New upstream release.
+  * Fix watch file to avoid cluttered versions.
+  * Bump versions in build-deps to ensure that dh overrides and
+    --with-quilt works
+  * Drop tests part from debian/rules completely, there is no test
+    in the source anymore.
+  * Add debian/README.source.
+  * Bump Standards-Version to 3.8.3, no changes needed.
+
+ -- Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>  Thu, 05 Nov 2009 11:09:36 +0100
+
+python-whoosh (0.3.~0b24-1) experimental; urgency=low
+
+  [ Bernd Zeimetz ]
+  * New upstream release.
+  * Whoosh is not compatible with 2.4 thanks to pickling problems,
+    drop compat patch and limit versions in debian/pyversions.
+  * Update watch file.
+  * Disable test for now as they're broken/not existant.
+
+ -- Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>  Fri, 02 Oct 2009 16:51:08 +0200
+
+python-whoosh (0.1.22-1) unstable; urgency=low
+
+  * New upstream release.
+  * Changed Maintainer to my credativ email address.
+  * Refreshed debian/patches/02-python2.4-fixes.diff.
+
+ -- Daniel Watkins <daniel.watkins@credativ.co.uk>  Sat, 06 Jun 2009 13:38:47 +0100
+
+python-whoosh (0.1.19-2) unstable; urgency=low
+
+  * Add debian/patches/01-remove-pyparsing.diff to remove the upstream copy of
+    the python-pyparsing library.
+  * Add python-pyparsing to Build-Depends-Indep
+
+ -- Daniel Watkins <daniel@daniel-watkins.co.uk>  Thu, 07 May 2009 16:44:18 +0100
+
+python-whoosh (0.1.19-1) unstable; urgency=low
+
+  * Initial release. (Closes: #522934)
+
+ -- Daniel Watkins <daniel@daniel-watkins.co.uk>  Fri, 01 May 2009 12:27:22 +0100

@@ -1,0 +1,4 @@
+0001-Added-coding-utf-8-header-to-the-.py-file-with-unico.patch
+0002-BF-TST-sort-suggestions-before-comparing-to-sorted-t.patch
+0003-Mark-non-determinstic-test_minimize_dfa-test-as-XFAI.patch
+0004-Use-tool-pytest-section-instead-of-pytest.patch

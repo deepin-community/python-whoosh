@@ -1,0 +1,59 @@
+Source: python-whoosh
+Section: python
+Priority: optional
+Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Uploaders:
+ Barry Warsaw <barry@debian.org>,
+ Chris Lamb <lamby@debian.org>,
+Build-Depends:
+ debhelper-compat (= 9),
+ dh-python,
+ python3-setuptools,
+ sphinx-common,
+Build-Depends-Indep:
+ python3-all,
+ python3-pytest,
+ python3-sphinx (>= 1.0.7+dfsg),
+Standards-Version: 4.4.1
+Homepage: http://bitbucket.org/mchaput/whoosh/
+Vcs-Git: https://salsa.debian.org/python-team/modules/python-whoosh.git
+Vcs-Browser: https://salsa.debian.org/python-team/modules/python-whoosh
+
+Package: python-whoosh-doc
+Architecture: all
+Section: doc
+Pre-Depends:
+ ${misc:Pre-Depends},
+Depends:
+ ${misc:Depends},
+ ${sphinxdoc:Depends},
+Replaces:
+ python-whoosh (<< 2.1.0),
+Description: full-text indexing, search, and spell checking library (doc)
+ Whoosh is a fast, pure-Python indexing and search library. Programmers
+ can use it to easily add search functionality to their applications and
+ websites. As Whoosh is pure Python, you don't have to compile or
+ install a binary support library and/or make Python work with a JVM, yet
+ indexing and searching is still very fast. Whoosh is designed to be
+ modular, so every part can be extended or replaced to meet your needs
+ exactly.
+ .
+ This package contains the library documentation for python-whoosh.
+
+Package: python3-whoosh
+Architecture: all
+Depends:
+ ${misc:Depends},
+ ${python3:Depends},
+Suggests:
+ python-whoosh-doc,
+Description: pure-Python full-text indexing, search, and spell checking library (Python 3)
+ Whoosh is a fast, pure-Python indexing and search library. Programmers
+ can use it to easily add search functionality to their applications and
+ websites. As Whoosh is pure Python, you don't have to compile or
+ install a binary support library and/or make Python work with a JVM, yet
+ indexing and searching is still very fast. Whoosh is designed to be
+ modular, so every part can be extended or replaced to meet your needs
+ exactly.
+ .
+ This package contains the python3 library

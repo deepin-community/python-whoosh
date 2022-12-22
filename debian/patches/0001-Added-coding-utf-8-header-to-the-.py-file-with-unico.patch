@@ -1,0 +1,17 @@
+From: Yaroslav Halchenko <debian@onerussian.com>
+Date: Fri, 14 Jul 2017 17:08:37 -0400
+Subject: Added coding: utf-8 header to the .py file with unicode characters
+
+---
+ tests/test_reading.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/test_reading.py b/tests/test_reading.py
+index 99a3193..e20a918 100644
+--- a/tests/test_reading.py
++++ b/tests/test_reading.py
+@@ -1,3 +1,4 @@
++# -*- coding: utf-8 -*-
+ from __future__ import with_statement
+ import random, threading, time
+ 

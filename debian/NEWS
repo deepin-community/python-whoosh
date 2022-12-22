@@ -1,0 +1,8 @@
+python-whoosh (0.1.22-1) unstable; urgency=low
+
+  When upgrading from earlier python-whoosh versions, you will have to
+  reindex all data, as the index format has changed.  How this has to
+  happen is application-specific.
+
+ -- Daniel Watkins <daniel.watkins@credativ.co.uk>  Sat, 06 Jun 2009 13:35:15 +0100
+

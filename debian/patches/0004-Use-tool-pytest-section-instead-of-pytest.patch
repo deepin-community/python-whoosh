@@ -1,0 +1,24 @@
+From: Emmanuel Arias <eamanu@yaerobi.com>
+Date: Wed, 8 Jan 2020 19:13:40 -0300
+Subject: Use [tool:pytest] section instead of [pytest]
+
+[pytest] section is deprecated from 3.0 [1]
+
+[1] https://github.com/pytest-dev/pytest/issues/3086
+---
+ setup.cfg | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.cfg b/setup.cfg
+index 340f60b..b5fe96c 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -15,7 +15,7 @@ formats = zip,gztar
+ push = sdist bdist_wheel upload
+ pushdocs = build_sphinx upload_sphinx
+ 
+-[pytest]
++[tool:pytest]
+ ; --tb= traceback print mode (long/short/line/native/no)
+ addopts = -rs --tb=native
+ 

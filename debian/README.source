@@ -1,0 +1,5 @@
+This package was orphaned and later adopted into the Debian Python Modules
+Team (DPMT).  As such, it retains its original gbp-pq workflow instead of the
+standard DPMT git-dpm workflow.
+
+ -- Barry Warsaw <barry@debian.org>, Tue,  7 Feb 2017 10:00:44 -0500

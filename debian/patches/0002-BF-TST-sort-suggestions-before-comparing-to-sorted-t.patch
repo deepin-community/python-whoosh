@@ -1,0 +1,22 @@
+From: Yaroslav Halchenko <debian@onerussian.com>
+Date: Fri, 14 Jul 2017 17:18:48 -0400
+Subject: BF(TST): sort suggestions before comparing to sorted target
+
+---
+ tests/test_spelling.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_spelling.py b/tests/test_spelling.py
+index ce5284f..7f2e40c 100644
+--- a/tests/test_spelling.py
++++ b/tests/test_spelling.py
+@@ -21,7 +21,8 @@ def test_list_corrector():
+     typo = "reoction"
+     sugs = list(corr.suggest(typo, maxdist=2))
+     target = [w for w in _wordlist if levenshtein(typo, w) <= 2]
+-    assert sugs == target
++    # _wordlist is sorted
++    assert sorted(sugs) == target
+ 
+ 
+ def test_automaton():
