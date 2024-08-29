@@ -1,23 +1,24 @@
 Source: python-whoosh
 Section: python
+Testsuite: autopkgtest-pkg-python
 Priority: optional
-Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
 Uploaders:
- Barry Warsaw <barry@debian.org>,
  Chris Lamb <lamby@debian.org>,
 Build-Depends:
- debhelper-compat (= 9),
+ debhelper-compat (= 13),
  dh-python,
  python3-setuptools,
  sphinx-common,
 Build-Depends-Indep:
  python3-all,
  python3-pytest,
- python3-sphinx (>= 1.0.7+dfsg),
-Standards-Version: 4.4.1
+ python3-sphinx,
+Standards-Version: 4.6.2
 Homepage: http://bitbucket.org/mchaput/whoosh/
-Vcs-Git: https://salsa.debian.org/python-team/modules/python-whoosh.git
-Vcs-Browser: https://salsa.debian.org/python-team/modules/python-whoosh
+Rules-Requires-Root: no
+Vcs-Git: https://salsa.debian.org/python-team/packages/python-whoosh.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/python-whoosh
 
 Package: python-whoosh-doc
 Architecture: all
@@ -27,8 +28,7 @@ Pre-Depends:
 Depends:
  ${misc:Depends},
  ${sphinxdoc:Depends},
-Replaces:
- python-whoosh (<< 2.1.0),
+Multi-Arch: foreign
 Description: full-text indexing, search, and spell checking library (doc)
  Whoosh is a fast, pure-Python indexing and search library. Programmers
  can use it to easily add search functionality to their applications and
