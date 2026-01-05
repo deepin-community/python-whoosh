@@ -1,0 +1,105 @@
+From 2a04eb936ccb60af4dfdd523c68b99e0d43e373f Mon Sep 17 00:00:00 2001
+From: Jamison Lahman <jamison@lahman.dev>
+Date: Sat, 29 Jul 2023 16:33:16 -0700
+Subject: [PATCH] [chore] fix "SyntaxError: invalid escape sequence"
+
+---
+ src/whoosh/analysis/filters.py   | 4 ++--
+ src/whoosh/analysis/intraword.py | 6 +++---
+ src/whoosh/lang/paicehusk.py     | 2 +-
+ src/whoosh/lang/porter2.py       | 2 +-
+ tests/test_analysis.py           | 2 +-
+ 5 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/src/whoosh/analysis/filters.py b/src/whoosh/analysis/filters.py
+index 3b6f5b47..5cea1480 100644
+--- a/src/whoosh/analysis/filters.py
++++ b/src/whoosh/analysis/filters.py
+@@ -53,7 +53,7 @@
+     \\S+?                  # URL body
+     (?=\\s|[.]\\s|$|[.]$)  # Stop at space/end, or a dot followed by space/end
+ ) | (                      # or...
+-    \w+([:.]?\w+)*         # word characters, with opt. internal colons/dots
++    \\w+([:.]?\\w+)*         # word characters, with opt. internal colons/dots
+ )
+ """, verbose=True)
+ 
+@@ -145,7 +145,7 @@ def __call__(self, tokens):
+ 
+ 
+ class TeeFilter(Filter):
+-    """Interleaves the results of two or more filters (or filter chains).
++    r"""Interleaves the results of two or more filters (or filter chains).
+ 
+     NOTE: because it needs to create copies of each token for each sub-filter,
+     this filter is quite slow.
+diff --git a/src/whoosh/analysis/intraword.py b/src/whoosh/analysis/intraword.py
+index 601423e1..9c1b8831 100644
+--- a/src/whoosh/analysis/intraword.py
++++ b/src/whoosh/analysis/intraword.py
+@@ -34,7 +34,7 @@
+ 
+ 
+ class CompoundWordFilter(Filter):
+-    """Given a set of words (or any object with a ``__contains__`` method),
++    r"""Given a set of words (or any object with a ``__contains__`` method),
+     break any tokens in the stream that are composites of words in the word set
+     into their individual parts.
+ 
+@@ -272,7 +272,7 @@ class IntraWordFilter(Filter):
+     >>> iwf_i = IntraWordFilter(mergewords=True, mergenums=True)
+     >>> iwf_q = IntraWordFilter(mergewords=False, mergenums=False)
+     >>> iwf = MultiFilter(index=iwf_i, query=iwf_q)
+-    >>> analyzer = RegexTokenizer(r"\S+") | iwf | LowercaseFilter()
++    >>> analyzer = RegexTokenizer(r"\\S+") | iwf | LowercaseFilter()
+ 
+     (See :class:`MultiFilter`.)
+     """
+@@ -282,7 +282,7 @@ class IntraWordFilter(Filter):
+     __inittypes__ = dict(delims=text_type, splitwords=bool, splitnums=bool,
+                          mergewords=bool, mergenums=bool)
+ 
+-    def __init__(self, delims=u("-_'\"()!@#$%^&*[]{}<>\|;:,./?`~=+"),
++    def __init__(self, delims=u("-_'\"()!@#$%^&*[]{}<>\\|;:,./?`~=+"),
+                  splitwords=True, splitnums=True,
+                  mergewords=False, mergenums=False):
+         """
+diff --git a/src/whoosh/lang/paicehusk.py b/src/whoosh/lang/paicehusk.py
+index 481c3e40..6aee9066 100644
+--- a/src/whoosh/lang/paicehusk.py
++++ b/src/whoosh/lang/paicehusk.py
+@@ -30,7 +30,7 @@ class PaiceHuskStemmer(object):
+     (?P<cont>[.>])
+     """, re.UNICODE | re.VERBOSE)
+ 
+-    stem_expr = re.compile("^\w+", re.UNICODE)
++    stem_expr = re.compile(r"^\w+", re.UNICODE)
+ 
+     def __init__(self, ruletable):
+         """
+diff --git a/src/whoosh/lang/porter2.py b/src/whoosh/lang/porter2.py
+index 4c740473..4d669752 100644
+--- a/src/whoosh/lang/porter2.py
++++ b/src/whoosh/lang/porter2.py
+@@ -64,7 +64,7 @@ def remove_initial_apostrophe(word):
+ def capitalize_consonant_ys(word):
+     if word.startswith('y'):
+         word = 'Y' + word[1:]
+-    return ccy_exp.sub('\g<1>Y', word)
++    return ccy_exp.sub(r'\g<1>Y', word)
+ 
+ 
+ def step_0(word):
+diff --git a/tests/test_analysis.py b/tests/test_analysis.py
+index c46a70db..425415f4 100644
+--- a/tests/test_analysis.py
++++ b/tests/test_analysis.py
+@@ -520,7 +520,7 @@ def test_stop_lang():
+ 
+ 
+ def test_issue358():
+-    t = analysis.RegexTokenizer("\w+")
++    t = analysis.RegexTokenizer(r"\w+")
+     with pytest.raises(analysis.CompositionError):
+         _ = t | analysis.StandardAnalyzer()
+ 

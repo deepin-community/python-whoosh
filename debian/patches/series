@@ -2,3 +2,6 @@
 0002-BF-TST-sort-suggestions-before-comparing-to-sorted-t.patch
 0003-Mark-non-determinstic-test_minimize_dfa-test-as-XFAI.patch
 0004-Use-tool-pytest-section-instead-of-pytest.patch
+0005-fix-weird-non-idiomatic-line.patch
+0006-avoid-syntax-warning.patch
+sphinx-8.0.patch

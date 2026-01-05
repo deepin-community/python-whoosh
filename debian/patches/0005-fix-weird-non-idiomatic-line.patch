@@ -1,0 +1,25 @@
+From d9a3fa2a4905e7326c9623c89e6395713c189161 Mon Sep 17 00:00:00 2001
+From: Matt Chaput <matt@whoosh.ca>
+Date: Sat, 15 Jan 2022 13:08:37 -0500
+Subject: [PATCH] Fix weird non-idiomatic line
+
+You should compare to an int using == not is (even though technically the int is implemented as a singleton object).
+Not sure how or why I typed this originally.
+Thanks to Philipp Kolmann for pointing this out.
+---
+ src/whoosh/codec/whoosh3.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/whoosh/codec/whoosh3.py b/src/whoosh/codec/whoosh3.py
+index 14b12205..a6b982a0 100644
+--- a/src/whoosh/codec/whoosh3.py
++++ b/src/whoosh/codec/whoosh3.py
+@@ -1117,7 +1117,7 @@ def _read_values(self):
+         vs = self._data[2]
+         if fixedsize is None or fixedsize < 0:
+             self._values = vs
+-        elif fixedsize is 0:
++        elif fixedsize == 0:
+             self._values = (None,) * self._blocklength
+         else:
+             assert isinstance(vs, bytes_type)
