@@ -1,3 +1,22 @@
+python-whoosh (2.7.4+git6-g9134ad92-10) unstable; urgency=medium
+
+  * Team upload.
+  * Port to Sphinx 8.0 (closes: #1090164).
+
+ -- Colin Watson <cjwatson@debian.org>  Fri, 20 Dec 2024 17:57:45 +0000
+
+python-whoosh (2.7.4+git6-g9134ad92-9) unstable; urgency=medium
+
+  * Team upload.
+  * d/upstream/metadata: Remove Homepage key from metadata.
+  * d/patches/0005-fix-weird-non-idiomatic-line.patch: Add patch to avoid
+    SytanxWarning for the use of 'is' during the comparation between numbers
+    (Closes: #985017).
+  * d/patches/0006-avoid-syntax-warning.patch: Add patch to avoid Syntax
+    warning on scape string (Closes: #1078666).
+
+ -- Emmanuel Arias <eamanu@debian.org>  Sun, 10 Nov 2024 00:24:28 -0300
+
 python-whoosh (2.7.4+git6-g9134ad92-8) unstable; urgency=medium
 
   * Team upload.
